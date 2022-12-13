@@ -32,12 +32,10 @@ column3, empty, column4 = st.columns([1.5, 0.5, 1.5])
 data = pandas.read_csv("data.csv", sep=";")
 
 
-with column3:
-    for index, row in data.iterrows():
-        if index % 2:
+for index, row in data.iterrows():
+    if index % 2:
+        with column3:
             create_row(row)
-
-with column4:
-    for index, row in data.iterrows():
-        if not index % 2:
+    else:
+        with column4:
             create_row(row)
